@@ -1,0 +1,53 @@
+{
+  "name": "node-rest-api-starter",
+  "version": "1.0.0",
+  "description": "node rest api starter",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/pm2-runtime index.js",
+    "start:watch": "./node_modules/.bin/pm2-runtime index.js --watch",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "lint": "eslint .",
+    "test": "cross-env NODE_ENV=test jest --forceExit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarkAdell/Node-REST-API-Starter.git"
+  },
+  "author": "Mark Adel <mark.adell@outlook.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8"
+  },
+  "bugs": {
+    "url": "https://github.com/MarkAdell/Node-REST-API-Starter/issues"
+  },
+  "homepage": "https://github.com/MarkAdell/Node-REST-API-Starter#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "body-parser": "^1.18.2",
+    "celebrate": "^8.0.0",
+    "compress": "^0.99.0",
+    "compression": "^1.7.3",
+    "cors": "^2.8.4",
+    "cross-env": "^5.2.0",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "faker": "^4.1.0",
+    "helmet": "^3.12.0",
+    "http-status": "^1.2.0",
+    "knex": "^0.15.0",
+    "morgan": "^1.9.0",
+    "pg": "^7.4.3",
+    "pm2": "^3.0.0",
+    "winston": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "jest": "^23.4.1",
+    "supertest": "^3.1.0"
+  }
+}

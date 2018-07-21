@@ -1,0 +1,16 @@
+{
+  "extends": "airbnb-base",
+  "rules": {
+    "global-require": 0,
+    "arrow-body-style": 0,
+    "import/order": 0,
+    "consistent-return": 0,
+    "func-names": 0
+  },
+  "env": {
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 8
+  }
+}
