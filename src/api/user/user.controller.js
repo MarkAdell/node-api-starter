@@ -2,15 +2,14 @@ const httpStatus = require('http-status');
 const userDataAccess = require('./user.dataAccess.js');
 const APIError = require('../../utils/APIError.js');
 const bcrypt = require('../../utils/bcrypt.js');
+const userErrors = require('./user.errors.js');
 
 const addUser = async (req, res, next) => {
   const userObj = req.body;
   try {
     const user = await userDataAccess.getUserByEmail(userObj.email);
     if (user) {
-      throw new APIError({
-        message: 'this email is used', status: httpStatus.CONFLICT, isPublic: true,
-      });
+      throw new APIError(userErrors.duplicate);
     }
     userObj.password = await bcrypt.hash(userObj.password);
     const newUser = await userDataAccess.saveUser(userObj);
@@ -29,9 +28,7 @@ const getUser = async (req, res, next) => {
   try {
     const user = await userDataAccess.getUserByID(userID);
     if (!user) {
-      throw new APIError({
-        message: 'user does not exist', status: httpStatus.NOT_FOUND, isPublic: true,
-      });
+      throw new APIError(userErrors.notFound);
     }
     res.status(httpStatus.OK).json({
       code: httpStatus.OK,

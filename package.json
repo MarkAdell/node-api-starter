@@ -4,12 +4,12 @@
   "description": "node rest api starter",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/pm2-runtime index.js",
-    "start:watch": "./node_modules/.bin/pm2-runtime index.js --watch",
+    "start": "pm2 start index.js",
+    "start:watch": "pm2 start index.js --watch",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
     "lint": "eslint .",
-    "test": "cross-env NODE_ENV=test jest --forceExit"
+    "test": "cross-env NODE_ENV=test jest"
   },
   "repository": {
     "type": "git",

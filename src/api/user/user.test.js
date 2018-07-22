@@ -13,8 +13,15 @@ const httpStatus = require('http-status');
 const USERS_URL = '/api/v1/users';
 
 beforeAll(async () => {
+  await knex.migrate.rollback();
   await knex.migrate.latest();
   logger.info('users tests: ran migrations on test db');
+});
+
+afterAll(async () => {
+  await knex.migrate.rollback();
+  await knex.destroy();
+  logger.info('users tests: rolled back migrations and destroyed the test db');
 });
 
 describe('POST /users API test', () => {
@@ -53,9 +60,4 @@ describe('POST /users API test', () => {
     expect(res.status).toBe(httpStatus.BAD_REQUEST);
     expect(res.body).toEqual(expectedResponse);
   });
-});
-
-afterAll(async () => {
-  await knex.migrate.rollback();
-  logger.info('users tests: rolled back migrations on test db');
 });

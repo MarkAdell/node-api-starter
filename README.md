@@ -9,7 +9,7 @@
 - [x] error handling
 - [x] input validation
 - [ ] authentication
-- [ ] socket.io
+- [ ] socket.io ?
 - [ ] API docs
 - [x] testing
 - [ ] CI
