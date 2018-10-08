@@ -1,18 +1,11 @@
 const Router = require('express').Router();
 const userController = require('./user.controller.js');
-const { postUserSchema, getUserSchema } = require('./user.validation');
-const { celebrate } = require('celebrate');
+const { validateAccessToken } = require('../../middlewares/validateAccessToken.js');
 
-Router.route('/')
-  .post(
-    celebrate(postUserSchema),
-    userController.addUser,
-  );
-
-Router.route('/:id')
+Router.route('/me')
   .get(
-    celebrate(getUserSchema),
-    userController.getUser,
+    validateAccessToken,
+    userController.getCurrentUser,
   );
 
 module.exports = Router;

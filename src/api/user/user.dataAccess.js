@@ -1,33 +1,22 @@
 const knex = require('../../config/knex.js');
 
-const TABLE_NAME = 'users';
+const USERS_INFO_TABLE = 'users_info';
 
-const saveUser = (userObj) => {
+const getUserInfoById = (userId) => {
   return knex
-    .insert(userObj)
-    .into(TABLE_NAME)
-    .returning('*')
-    .then(rows => rows[0]);
-};
-
-const getUserByID = (userId) => {
-  return knex
-    .select('*')
-    .from(TABLE_NAME)
-    .where('id', userId)
-    .then(rows => rows[0]);
-};
-
-const getUserByEmail = (userEmail) => {
-  return knex
-    .select('*')
-    .from(TABLE_NAME)
-    .where('email', userEmail)
+    .select(
+      'user_id as userId',
+      'nickname',
+      'profile_picture as profilePicture',
+      'biography',
+      'gender',
+      'date_of_birth as dateOfBirth',
+    )
+    .from(USERS_INFO_TABLE)
+    .where('user_id', userId)
     .then(rows => rows[0]);
 };
 
 module.exports = {
-  getUserByID,
-  saveUser,
-  getUserByEmail,
+  getUserInfoById,
 };

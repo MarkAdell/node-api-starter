@@ -7,12 +7,6 @@ const errors = {
     isOperational: true,
     isPublic: true,
   },
-  duplicate: {
-    message: 'this email is used',
-    status: httpStatus.CONFLICT,
-    isOperational: true,
-    isPublic: true,
-  },
 };
 
 module.exports = errors;

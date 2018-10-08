@@ -13,6 +13,10 @@ $ cd node-api-starter
 $ npm install
 ```
 
+### Required setup
+- Choose your relational database of choice, create a database.
+- Create the `.env` file and fill it with your environment variables, check `.env.example` to check the required environment varables for this starter.
+
 To run the server
 ```bash
 $ npm run start
@@ -27,12 +31,20 @@ Run jest tests
 $ npm run test
 ```
 
+Run knex latest migrations
+```bash
+$ npm run migrate
+```
+
+To rollback
+```bash
+$ npm run rollback
+```
+
 ## Todo
 
-- [ ] authentication
-- [ ] socket.io
-- [ ] API docs
-- [ ] CI
+- [ ] Switch to typescript.
+- [ ] API docs.
 
 ## License
 
