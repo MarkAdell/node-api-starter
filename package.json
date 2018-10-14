@@ -4,9 +4,12 @@
   "description": "node rest api starter",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start index.js",
-    "start:watch": "pm2 start index.js --watch",
-    "migrate": "knex migrate:latest",
+    "start": "pm2 start ecosystem.config.js --env production",
+    "start:dev": "pm2 start ecosystem.config.js --env development --watch",
+    "restart": "pm2 restart ecosystem.config.js --env production",
+    "restart:dev": "pm2 restart ecosystem.config.js --env development --watch",
+    "migrate": "knex migrate:latest --env production",
+    "migrate:dev": "knex migrate:latest --env development",
     "rollback": "knex migrate:rollback",
     "lint": "eslint .",
     "test": "cross-env NODE_ENV=test jest"
@@ -25,7 +28,7 @@
   },
   "homepage": "https://github.com/MarkAdell/Node-REST-API-Starter#readme",
   "dependencies": {
-    "bcrypt": "^3.0.0",
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "celebrate": "^8.0.0",
     "compress": "^0.99.0",
