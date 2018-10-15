@@ -14,16 +14,17 @@ $ npm install
 ```
 
 ### Required setup
+- Install `pm2` and `knex` globally.
 - Choose your relational database of choice, create a database.
 - Create the `.env` file and fill it with your environment variables, check `.env.example` to check the required environment varables for this starter.
 
 To run the server
 ```bash
-$ npm run start
+$ npm run start:dev
 ```
-In watch mode
+To view logs
 ```bash
-$ npm run start:watch
+$ pm2 logs
 ```
 
 Run jest tests
@@ -31,9 +32,14 @@ Run jest tests
 $ npm run test
 ```
 
+Create a new migration
+```bash
+$ knex migrate:make <migration_name>
+```
+
 Run knex latest migrations
 ```bash
-$ npm run migrate
+$ npm run migrate:dev
 ```
 
 To rollback
