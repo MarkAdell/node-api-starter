@@ -14,6 +14,7 @@ $ npm install
 ```
 
 ### Required setup
+- Install `pm2` and `knex` globally.
 - Choose your relational database of choice, create a database.
 - Create the `.env` file and fill it with your environment variables, check `.env.example` to check the required environment varables for this starter.
 
