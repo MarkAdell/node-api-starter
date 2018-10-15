@@ -20,11 +20,11 @@ $ npm install
 
 To run the server
 ```bash
-$ npm run start
+$ npm run start:dev
 ```
-In watch mode
+To view logs
 ```bash
-$ npm run start:watch
+$ pm2 logs
 ```
 
 Run jest tests
@@ -32,9 +32,14 @@ Run jest tests
 $ npm run test
 ```
 
+Create a new migration
+```bash
+$ knex migrate:make <migration_name>
+```
+
 Run knex latest migrations
 ```bash
-$ npm run migrate
+$ npm run migrate:dev
 ```
 
 To rollback
