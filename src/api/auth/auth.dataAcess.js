@@ -1,10 +1,11 @@
-const knex = require('../../config/knex.js');
+const User = require('../../db/models/user.model');
+const UserInfo = require('../../db/models/userInfo.model');
 
 const USERS_TABLE = 'users';
 const USERS_INFO_TABLE = 'users_info';
 
 const getOneUserByCustomColumn = (column, value) => {
-  return knex
+  return User.query()
     .select(
       'password',
       'user_id as userId',
@@ -15,7 +16,7 @@ const getOneUserByCustomColumn = (column, value) => {
 };
 
 const updateRefreshToken = (userId, refreshToken) => {
-  return knex(USERS_TABLE)
+  return User.query()
     .update({
       refresh_token: refreshToken,
     })
@@ -23,7 +24,7 @@ const updateRefreshToken = (userId, refreshToken) => {
 };
 
 const saveUser = (userObj) => {
-  return knex
+  return User.query()
     .insert({
       email: userObj.email,
       password: userObj.password,
@@ -34,7 +35,7 @@ const saveUser = (userObj) => {
 };
 
 const saveUserInfo = (userId, userObj) => {
-  return knex
+  return User.query()
     .insert({
       user_id: userId,
       nickname: userObj.nickname,
